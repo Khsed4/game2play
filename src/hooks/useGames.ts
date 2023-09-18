@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import ApiClients from "../services/ApiClients";
 import { CanceledError } from "axios";
+export interface platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 export interface Game {
   id: number;
   rating: number;
   name: string;
   background_image: string;
+  parent_platforms: [{ platform: platform }];
 }
 interface FetchResponseGame {
   count: number;
@@ -19,7 +25,7 @@ const useGames = () => {
     ApiClients.get<FetchResponseGame>("/games", { signal: controller.signal })
       .then((respones) => {
         setGames(respones.data.results);
-        console.log("yes");
+        console.log(respones.data.results);
       })
       .catch((errors) => {
         if (errors instanceof CanceledError) return;
