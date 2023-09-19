@@ -27,7 +27,6 @@ const useGames = () => {
     ApiClients.get<FetchResponseGame>("/games", { signal: controller.signal })
       .then((respones) => {
         setGames(respones.data.results);
-        console.log(respones.data.results);
         setLoading(false);
       })
       .catch((errors) => {
