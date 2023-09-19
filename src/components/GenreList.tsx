@@ -11,9 +11,13 @@ import useGeneres, { Genres } from "../hooks/useGenres";
 import getCroppedImageURL from "../services/imageUrL";
 import GenreSkeleton from "./GenreSkeleton";
 interface Props {
-  selectedGenre: (genre: Genres) => void;
+  OnSlectedGenre: (genre: Genres) => void;
+  highlitedGenre: Genres | null;
 }
-const GenreList = ({ selectedGenre }: Props) => {
+const GenreList = ({
+  OnSlectedGenre: selectedGenre,
+  highlitedGenre,
+}: Props) => {
   const { isLoading, error, data } = useGeneres();
   const skeletons = [1, 2, 3, 4, 5, 15, 6, 7, 8, 9, 19];
   if (isLoading) return skeletons.map((sk) => <GenreSkeleton key={sk} />);
@@ -27,7 +31,11 @@ const GenreList = ({ selectedGenre }: Props) => {
               borderRadius={8}
               src={getCroppedImageURL(genre.image_background)}
             />
-            <Button onClick={() => selectedGenre(genre)} variant="link">
+            <Button
+              onClick={() => selectedGenre(genre)}
+              variant="link"
+              fontWeight={highlitedGenre?.id === genre.id ? "bold" : "normal"}
+            >
               {genre.name}
             </Button>
           </HStack>
