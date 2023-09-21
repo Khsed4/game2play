@@ -7,7 +7,7 @@ interface Props {
   selectedPlatform: platform | null;
 }
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
-  const { error, isLoading, data } = usePlatform();
+  const { error, data } = usePlatform();
   if (error) return null;
   return (
     <Menu>

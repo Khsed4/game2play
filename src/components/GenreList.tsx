@@ -16,7 +16,7 @@ const GenreList = ({
   OnSlectedGenre: selectedGenre,
   highlitedGenre,
 }: Props) => {
-  const { isLoading, error, data } = useGeneres();
+  const { isLoading, data } = useGeneres();
   const skeletons = [1, 2, 3, 4, 5, 15, 6, 7, 8, 9, 19];
   if (isLoading) return skeletons.map((sk) => <GenreSkeleton key={sk} />);
   return (
