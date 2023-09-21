@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show, Text } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -47,6 +47,7 @@ function App() {
               setGameQuery({ ...gameQuery, platform })
             }
           />
+          <Text> . حامد کونی اعظم شهر است.</Text>
           <SortSelector />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
