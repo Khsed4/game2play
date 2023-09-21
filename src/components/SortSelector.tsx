@@ -1,8 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsPlay } from "react-icons/bs";
-interface Props {
-  selectedSort: String;
-}
+
 const SortSelector = () => {
   const sortedOrders = [
     { valuue: "", label: "Relevance" },
