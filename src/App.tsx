@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show, Text } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -6,10 +6,11 @@ import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { platform } from "./hooks/useGames";
-import SortSelector from "./components/SortSelector";
+import SortSelector, { Sort } from "./components/SortSelector";
 export interface GameQuery {
   genre: Genres | null;
   platform: platform | null;
+  sort: Sort;
 }
 
 function App() {
@@ -47,8 +48,12 @@ function App() {
               setGameQuery({ ...gameQuery, platform })
             }
           />
-          <Text> . حامد کونی اعظم شهر است.</Text>
-          <SortSelector />
+          <SortSelector
+            onSelectedSort={(sort) => {
+              setGameQuery({ ...gameQuery, sort });
+            }}
+            selectedSort={gameQuery.sort?.label}
+          />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
