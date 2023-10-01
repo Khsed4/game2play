@@ -55,7 +55,7 @@ function App() {
           />
           <SortSelector
             onSelectedSort={(sort) => {
-              setGameQuery({ ...gameQuery, sort });
+              setGameQuery({ ...gameQuery, sort  });
             }}
             selectedSort={gameQuery.sort?.label}
           />
